@@ -26,12 +26,13 @@
         "singleQuote": true,
         "bracketSpacing": true,
         "useTabs": false,
-        "tabWidth": 2,
+        "tabWidth": "auto",
         "endOfLine": "auto"
       }
     ],
     "indent": ["error", 2],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "endOfLine": "off"
   }
 }
