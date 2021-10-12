@@ -9,6 +9,17 @@ export default function (app: Application): typeof Model {
   const users = sequelizeClient.define(
     'users',
     {
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      avatar: {
+        type: DataTypes.STRING,
+      },    
       email: {
         type: DataTypes.STRING,
         allowNull: false,
