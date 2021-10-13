@@ -1,12 +1,19 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { Menu } from 'react-feather';
 import { Link } from 'react-router-dom';
+import { logout, useAuthDispatch, useAuthState } from '../auth';
 
 const Navbar: React.FC = () => {
+  const dispatch = useAuthDispatch();
+  const { isLogged } = useAuthState();
+
+  const handleLogout = async () => {
+    await logout(dispatch);
+  };
+
   return (
     <>
-
       <Popover className="relative bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -58,20 +65,32 @@ const Navbar: React.FC = () => {
                 About
               </Link>
             </nav>
-            <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-              <Link
-                to="/login"
-                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Sign in
-              </Link>
-              <Link
-                to="/register"
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-              >
-                Sign up
-              </Link>
-            </div>
+            {isLogged ? (
+              <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                <Link
+                  to="/login"
+                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Link>
+              </div>
+            ) : (
+              <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                <Link
+                  to="/login"
+                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  to="/register"
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                >
+                  Sign up
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
@@ -136,30 +155,42 @@ const Navbar: React.FC = () => {
                     <span>About</span>
                   </Link>
                 </div>
-                <div>
-                  <Link
-                    to="/register"
-                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-                  >
-                    Register
-                  </Link>
-                  <p className="mt-6 text-center text-base font-medium text-gray-500">
-                    Already have an account?{' '}
+                {isLogged ? (
+                  <div>
+                    <Link
+                      to="/register"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                    >
+                      Register
+                    </Link>
+                    <p className="mt-6 text-center text-base font-medium text-gray-500">
+                      Already have an account?{' '}
+                      <Link
+                        to="/login"
+                        className="text-indigo-600 hover:text-indigo-500"
+                      >
+                        Login
+                      </Link>
+                    </p>
+                  </div>
+                ) : (
+                  <div>
                     <Link
                       to="/login"
-                      className="text-indigo-600 hover:text-indigo-500"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      onClick={handleLogout}
                     >
-                      Login
+                      Register
                     </Link>
-                  </p>
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </Popover.Panel>
         </Transition>
       </Popover>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

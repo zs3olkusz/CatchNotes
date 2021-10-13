@@ -1,10 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 const Layout: React.FC = ({ children }) => {
   return (
     <div>
