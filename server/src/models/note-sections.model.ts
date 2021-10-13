@@ -4,6 +4,10 @@ import { Sequelize, DataTypes, Model } from 'sequelize';
 import { Application } from '../declarations';
 import { HookReturn } from 'sequelize/types/lib/hooks';
 
+/* Note Section
+ * Model will be section of note that will be displayed on page.
+ * It will contain basic plain text note, quiz, image, voice message.
+ */
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
   const noteSections = sequelizeClient.define(
@@ -17,12 +21,8 @@ export default function (app: Application): typeof Model {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      noteId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       index: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         defaultValue: 0,
       },
     },
@@ -40,6 +40,9 @@ export default function (app: Application): typeof Model {
   (noteSections as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    const { notes } = models;
+
+    noteSections.belongsTo(notes);
   };
 
   return noteSections;

@@ -14,10 +14,6 @@ export default function (app: Application): typeof Model {
         allowNull: false,
         unique: true,
       },
-      author: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
     },
     {
       timestamps: true,
@@ -33,6 +29,9 @@ export default function (app: Application): typeof Model {
   (notes as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    const { users } = models;
+
+    notes.belongsTo(users);
   };
 
   return notes;
