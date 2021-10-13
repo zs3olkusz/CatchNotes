@@ -4,15 +4,17 @@ import crypto from 'crypto';
 import { Params } from '@feathersjs/feathers';
 
 const gravatarUrl = 'https://s.gravatar.com/avatar';
-// The size query. Our chat needs 60px images
-const query = 's=60';
+
 // Returns the Gravatar image for an email
 const getGravatar = (email: string) => {
-  // Gravatar uses MD5 hashes from an email address (all lowercase) to get the image
-  const hash = crypto.createHash('md5').update(email.toLowerCase()).digest('hex');
+  const hash = crypto
+    .createHash('md5')
+    .update(email.toLowerCase())
+    .digest('hex');
+
   // Return the full avatar URL
-  return `${gravatarUrl}/${hash}?${query}`;
-}
+  return `${gravatarUrl}/${hash}`;
+};
 
 interface UserData {
   _id?: string;
@@ -29,7 +31,7 @@ export class Users extends Service {
     super(options);
   }
 
-  create (data: UserData, params?: Params) {
+  create(data: UserData, params?: Params) {
     // This is the information we want from the user signup data
     const { email, password, firstName, lastName } = data;
     // Use the existing avatar image or return the Gravatar for the email
@@ -40,7 +42,7 @@ export class Users extends Service {
       firstName,
       lastName,
       password,
-      avatar
+      avatar,
     };
 
     // Call the original `create` method with existing `params` and new data
