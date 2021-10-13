@@ -13,7 +13,7 @@ const IndexRouter: React.FC = () => {
       <Route exact path="/" component={HomeView} />
       <Route exact path="/login" component={LoginView} />
       <Route exact path="/notes" component={NoteListView} />
-      <Route exact path="/notes/:id" component={NoteView} />
+      <Route path="/notes/:id" component={NoteView} />
       <Route path="*" component={NotFoundView} />
     </Switch>
   );
