@@ -20,7 +20,7 @@ export default function (app: Application): typeof Model {
       },
       updatedAt: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {

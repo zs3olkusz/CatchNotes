@@ -1,10 +1,12 @@
+import { setTimestamp } from '../../hooks/timestamp';
+
 export default {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
-    update: [],
+    create: [setTimestamp('createdAt')],
+    update: [setTimestamp('updatedAt')],
     patch: [],
     remove: [],
   },
