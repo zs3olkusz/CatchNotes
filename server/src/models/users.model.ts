@@ -19,7 +19,7 @@ export default function (app: Application): typeof Model {
       },
       avatar: {
         type: DataTypes.STRING,
-      },    
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
