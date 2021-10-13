@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 import { loginUser, useAuthDispatch, useAuthState } from '../auth';
 
@@ -68,7 +68,9 @@ const LoginView: React.FC = () => {
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt="Logo"
           />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Sign in to your account
+          </h2>
         </div>
         <form className="mt-8 space-y-6" method="POST" onSubmit={handleLogin}>
           <input type="hidden" name="remember" defaultValue="true" />
@@ -115,13 +117,19 @@ const LoginView: React.FC = () => {
                 type="checkbox"
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+              <label
+                htmlFor="remember-me"
+                className="ml-2 block text-sm text-gray-900"
+              >
                 Remember me
               </label>
             </div>
 
             <div className="text-sm">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a
+                href="#"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+              >
                 Forgot your password?
               </a>
             </div>
@@ -139,7 +147,7 @@ const LoginView: React.FC = () => {
         </form>
       </div>
     </div>
-  )
+  );
 };
 
 export default LoginView;
