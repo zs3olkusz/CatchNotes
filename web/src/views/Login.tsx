@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { loginUser, useAuthDispatch, useAuthState } from '../auth';
 
@@ -10,6 +10,7 @@ const LoginView: React.FC = () => {
     email: '',
     password: '',
   });
+  const [err, setErr] = useState('');
 
   const dispatch = useAuthDispatch();
   const { isLogged, loading, errorMessage } = useAuthState();
@@ -47,15 +48,23 @@ const LoginView: React.FC = () => {
     e.preventDefault();
 
     try {
+      setErr('');
+
       const res = await loginUser(dispatch, loginDetails);
 
       if (errorMessage) {
-        console.error(errorMessage);
+        setErr(errorMessage);
       }
 
-      if (!res) return;
+      if (!res) {
+        try {
+          history.goBack();
+        } catch {
+          history.push('/');
+        }
+      }
     } catch (err) {
-      console.error(err);
+      setErr((err as any).message || err);
     }
   };
 
@@ -72,6 +81,13 @@ const LoginView: React.FC = () => {
             Sign in to your account
           </h2>
         </div>
+
+        <div>
+          {err && (
+            <div className="text-sm text-red-600 font-semibold">{err}</div>
+          )}
+        </div>
+
         <form className="mt-8 space-y-6" method="POST" onSubmit={handleLogin}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
@@ -110,28 +126,22 @@ const LoginView: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
+            <div className="text-sm">
+              <Link
+                to="/register"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
               >
-                Remember me
-              </label>
+                Don't have an account?
+              </Link>
             </div>
 
             <div className="text-sm">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 

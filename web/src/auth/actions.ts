@@ -2,6 +2,7 @@ import React from 'react';
 import { Cookies } from 'react-cookie';
 
 import { api, createAccessTokenCookie } from '../api';
+import { IUser } from '../types/models';
 import type { IAuthAction } from './reducer';
 
 const cookies = new Cookies();
@@ -13,10 +14,7 @@ interface ILoginPayload {
 
 interface ILoginResult {
   accessToken: string;
-  user: {
-    _id: string;
-    email: string;
-  };
+  user: IUser;
 }
 
 export async function loginUser(
@@ -25,14 +23,14 @@ export async function loginUser(
 ): Promise<ILoginResult | undefined> {
   try {
     dispatch({ type: 'REQUEST_LOGIN' });
-    let data = {
+    let data: ILoginResult = {
       accessToken: '',
-      authentication: {
-        strategy: '',
-      },
       user: {
         _id: '',
         email: '',
+        firstName: '',
+        lastName: '',
+        avatar: '',
       },
     };
     let error = '';
@@ -40,8 +38,7 @@ export async function loginUser(
     await api
       .post('/authentication/', loginPayload)
       .then((res) => {
-        // @ts-ignore
-        data = res.data;
+        data = res.data as ILoginResult;
       })
       .catch((err) => {
         error = err.message || err;

@@ -12,6 +12,9 @@ const AuthStateContext = createContext<IAuthState>({
   user: accessTokenCookie?.user || {
     _id: '',
     email: '',
+    firstName: '',
+    lastName: '',
+    avatar: '',
   },
   accessToken: accessTokenCookie || '',
   loading: false,
