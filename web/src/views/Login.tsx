@@ -42,6 +42,26 @@ const LoginView: React.FC = () => {
     });
   };
 
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  // Whenever the user explicitly chooses light mode
+  localStorage.theme = 'light';
+
+  // Whenever the user explicitly chooses dark mode
+  localStorage.theme = 'dark';
+
+  // Whenever the user explicitly chooses to respect the OS preference
+  localStorage.removeItem('theme');
+
   const handleLogin = async (
     e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
   ) => {
@@ -145,14 +165,16 @@ const LoginView: React.FC = () => {
             </div>
           </div>
 
-          <div>
+          <div className="dark">
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-green-400 to-blue-500 focus:from-pink-500 focus:to-yellow-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               disabled={loading}
             >
               Sign in
             </button>
+            <div className="bg-white dark:bg-black"></div>
+            <div className="bg-white dark:bg-black"></div>
           </div>
         </form>
       </div>
