@@ -81,6 +81,13 @@ const LoginView: React.FC = () => {
             Sign in to your account
           </h2>
         </div>
+
+        <div>
+          {err && (
+            <div className="text-sm text-red-600 font-semibold">{err}</div>
+          )}
+        </div>
+
         <form className="mt-8 space-y-6" method="POST" onSubmit={handleLogin}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
