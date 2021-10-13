@@ -31,6 +31,7 @@ export default function (app: Application): typeof Model {
       },
     },
     {
+      timestamps: true,
       hooks: {
         beforeCount(options: any): HookReturn {
           options.raw = true;
