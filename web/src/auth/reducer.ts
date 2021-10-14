@@ -15,7 +15,7 @@ export interface IAuthState {
 const accessTokenCookie = cookies.get('access_token');
 
 let userData: IUser = {
-  _id: '',
+  id: '',
   email: '',
   firstName: '',
   lastName: '',
@@ -27,7 +27,7 @@ if (accessTokenCookie) {
 }
 
 const user: IUser = {
-  _id: userData._id,
+  id: userData.id,
   email: userData.email,
   firstName: userData.firstName,
   lastName: userData.lastName,
@@ -74,7 +74,7 @@ export const AuthReducer = (
       return {
         ...initialState,
         user: {
-          _id: '',
+          id: '',
           email: '',
           firstName: '',
           lastName: '',

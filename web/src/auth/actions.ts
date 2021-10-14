@@ -26,7 +26,7 @@ export async function loginUser(
     let data: ILoginResult = {
       accessToken: '',
       user: {
-        _id: '',
+        id: '',
         email: '',
         firstName: '',
         lastName: '',

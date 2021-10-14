@@ -10,7 +10,7 @@ const accessTokenCookie = cookies.get('access_token');
 
 const AuthStateContext = createContext<IAuthState>({
   user: accessTokenCookie?.user || {
-    _id: '',
+    id: '',
     email: '',
     firstName: '',
     lastName: '',
