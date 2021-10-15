@@ -3,6 +3,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { Menu } from 'react-feather';
 import { Link } from 'react-router-dom';
 import { logout, useAuthDispatch, useAuthState } from '../auth';
+import logo from '../assets/logo.png'
 
 const Navbar: React.FC = () => {
   const dispatch = useAuthDispatch();
@@ -21,8 +22,8 @@ const Navbar: React.FC = () => {
               <Link to="/">
                 <span className="sr-only">Workflow</span>
                 <img
-                  className="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                  className="h-12 w-auto sm:h-14"
+                  src={logo}
                   alt=""
                 />
               </Link>

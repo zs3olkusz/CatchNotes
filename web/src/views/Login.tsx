@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { loginUser, useAuthDispatch, useAuthState } from '../auth';
+import logo from '../assets/logo-small.png'
 
 const LoginView: React.FC = () => {
   const history = useHistory();
@@ -73,8 +74,8 @@ const LoginView: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <img
-            className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+            className="mx-auto h-36 w-auto"
+            src={logo}
             alt="Logo"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
