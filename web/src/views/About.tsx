@@ -8,7 +8,7 @@ const About: React.FC = () => {
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center">
           <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg from-purple-400 via-pink-400 to-blue-500 bg-gradient-to-r">
+            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg from-purple-400 via-pink-400 to-blue-500 bg-gradient-to-br">
               <img alt="..." src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=80" className="w-full align-middle rounded-t-lg"/>
               <blockquote className="relative p-8 mb-4">
               <h4 className="text-xl font-bold text-white">
