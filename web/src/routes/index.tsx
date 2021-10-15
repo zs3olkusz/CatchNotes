@@ -8,12 +8,14 @@ const NoteView = lazy(() => import('../views/Note'));
 const NoteListView = lazy(() => import('../views/NoteList'));
 const NotFoundView = lazy(() => import('../views/NotFound'));
 const AboutView = lazy(() => import('../views/About'));
+const FaqView = lazy(() => import('../views/Faq'));
 
 const IndexRouter: React.FC = () => {
   return (
     <Switch>
       <Route exact path="/" component={HomeView} />
       <Route exact path="/about" component={AboutView} />
+      <Route exact path="/faq" component={FaqView} />
       <Route exact path="/login" component={LoginView} />
       <Route exact path="/register" component={RegisterView} />
       <Route exact path="/notes" component={NoteListView} />
