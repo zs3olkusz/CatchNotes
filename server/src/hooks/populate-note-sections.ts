@@ -5,19 +5,12 @@ import { Hook, HookContext } from '@feathersjs/feathers';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default (options = {}): Hook => {
   return async (context: HookContext): Promise<HookContext> => {
-    const { app, method, params, result } = context;
+    const { app, method, result } = context;
 
     const addNoteSection = async (data: any) => {
       const noteSections = await app.service('note-sections').find({
         query: {
-          /**
-           * TODO: diffrent limit for note and note sections
-           *
-           * EXAMPLE: (localhost:3030/notes/?$limit=20)
-           * This will add how many objects return per page for notes
-           * but also for sections
-           */
-          ...params.query,
+          // TODO: add changable note section limit per page
           noteId: data.id,
         },
       });
