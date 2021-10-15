@@ -10,9 +10,12 @@ export default function (app: Application): typeof Model {
     'notes',
     {
       title: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(250),
         allowNull: false,
-        unique: true,
+      },
+      description: {
+        type: DataTypes.STRING(500),
+        allowNull: true,
       },
     },
     {

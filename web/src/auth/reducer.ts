@@ -20,6 +20,8 @@ let userData: IUser = {
   firstName: '',
   lastName: '',
   avatar: '',
+  createdAt: '',
+  updatedAt: '',
 };
 
 if (accessTokenCookie) {
@@ -32,6 +34,8 @@ const user: IUser = {
   firstName: userData.firstName,
   lastName: userData.lastName,
   avatar: userData.avatar,
+  createdAt: userData.createdAt,
+  updatedAt: userData.updatedAt,
 };
 
 export const initialState: IAuthState = {
@@ -79,6 +83,8 @@ export const AuthReducer = (
           firstName: '',
           lastName: '',
           avatar: '',
+          createdAt: '',
+          updatedAt: '',
         },
         accessToken: '',
         isLogged: false,

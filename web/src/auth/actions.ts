@@ -31,6 +31,8 @@ export async function loginUser(
         firstName: '',
         lastName: '',
         avatar: '',
+        createdAt: '',
+        updatedAt: '',
       },
     };
     let error = '';
