@@ -1,3 +1,4 @@
+import { format, formatDistance } from 'date-fns';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
@@ -25,16 +26,31 @@ const NoteListView: React.FC = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="-my-8 divide-y-2 divide-gray-100">
           {status === 'loading' ? (
-            <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">loading</h2>
+            <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
+              loading
+            </h2>
           ) : status === 'error' ? (
-            <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">{error}</h2>
+            <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
+              {error}
+            </h2>
           ) : (
             data.data.map((note: INote) => (
-              <div className="py-8 flex flex-wrap md:flex-nowrap" key={note.id}>
+              <article
+                className="py-8 flex flex-wrap md:flex-nowrap"
+                key={note.id}
+              >
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                  <span className="mt-1 text-gray-500 text-sm">
-                    {new Date(note.createdAt).toLocaleString()}
-                  </span>
+                  <time
+                    className="mt-1 text-gray-500 text-sm capitalize"
+                    dateTime={format(
+                      new Date(note.createdAt),
+                      "yyyy-MM-dd'T'HH:mm:ss"
+                    )}
+                  >
+                    {formatDistance(new Date(note.createdAt), new Date(), {
+                      addSuffix: true,
+                    })}
+                  </time>
                 </div>
                 <div className="md:flex-grow">
                   <Link to={`/notes/${note.id}`}>
@@ -46,7 +62,7 @@ const NoteListView: React.FC = () => {
                     <p className="leading-relaxed">{note.description}</p>
                   )}
                 </div>
-              </div>
+              </article>
             ))
           )}
         </div>
