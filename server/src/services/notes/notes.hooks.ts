@@ -2,6 +2,7 @@ import * as authentication from '@feathersjs/authentication';
 import isNoteOwner from '../../hooks/is-note-owner';
 import getUser from '../../hooks/get-user';
 import populateUser from '../../hooks/populate-user';
+import populateNoteSections from '../../hooks/populate-note-sections';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -19,8 +20,8 @@ export default {
 
   after: {
     all: [populateUser()],
-    find: [],
-    get: [],
+    find: [populateNoteSections()],
+    get: [populateNoteSections()],
     create: [],
     update: [],
     patch: [],
