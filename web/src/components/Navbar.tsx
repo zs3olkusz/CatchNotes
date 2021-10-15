@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
             </div>
             <nav className="hidden md:flex space-x-10">
               <Link
-                to="/"
+                to="/notes"
                 className="text-base font-medium text-gray-500 hover:text-gray-900"
               >
                 <span>Notes</span>
@@ -156,7 +156,7 @@ const Navbar: React.FC = () => {
                     <span>About</span>
                   </Link>
                 </div>
-                {isLogged ? (
+                {!isLogged ? (
                   <div>
                     <Link
                       to="/register"
@@ -181,7 +181,7 @@ const Navbar: React.FC = () => {
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                       onClick={handleLogout}
                     >
-                      Register
+                      Logout
                     </Link>
                   </div>
                 )}
