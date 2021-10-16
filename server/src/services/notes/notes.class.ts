@@ -3,7 +3,7 @@ import { Service, SequelizeServiceOptions } from 'feathers-sequelize';
 import { Application } from '../../declarations';
 
 interface NoteData {
-  _id?: string;
+  id?: string;
   title: string;
   userId: string;
 }

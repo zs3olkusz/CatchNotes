@@ -6,20 +6,20 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const notes = sequelizeClient.define(
-    'notes',
+  const quizQuestions = sequelizeClient.define(
+    'quiz_questions',
     {
-      title: {
+      text: {
         type: DataTypes.STRING(250),
         allowNull: false,
       },
-      description: {
-        type: DataTypes.STRING(500),
-        allowNull: true,
+      isCorrect: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {
-      timestamps: true,
+      timestamps: false,
       hooks: {
         beforeCount(options: any): HookReturn {
           options.raw = true;
@@ -29,14 +29,13 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (notes as any).associate = function (models: any): void {
+  (quizQuestions as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    const { note_sections, users } = models;
+    const { note_sections } = models;
 
-    notes.hasMany(note_sections);
-    notes.belongsTo(users);
+    quizQuestions.belongsTo(note_sections);
   };
 
-  return notes;
+  return quizQuestions;
 }

@@ -1,5 +1,6 @@
 import * as authentication from '@feathersjs/authentication';
 import isNoteOwner from '../../hooks/is-note-owner';
+import populateQuizQuestions from '../../hooks/populate-quiz-questions';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -9,16 +10,16 @@ export default {
     all: [],
     find: [],
     get: [],
-    create: [authenticate('jwt')],
-    update: [authenticate('jwt'), isNoteOwner()],
-    patch: [authenticate('jwt'), isNoteOwner()],
-    remove: [authenticate('jwt'), isNoteOwner()],
+    create: [authenticate('jwt'), isNoteOwner('noteSection')],
+    update: [authenticate('jwt'), isNoteOwner('noteSection')],
+    patch: [authenticate('jwt'), isNoteOwner('noteSection')],
+    remove: [authenticate('jwt'), isNoteOwner('noteSection')],
   },
 
   after: {
     all: [],
     find: [],
-    get: [],
+    get: [populateQuizQuestions()],
     create: [],
     update: [],
     patch: [],

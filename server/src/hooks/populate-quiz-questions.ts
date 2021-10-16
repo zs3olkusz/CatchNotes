@@ -7,27 +7,28 @@ export default (options = {}): Hook => {
   return async (context: HookContext): Promise<HookContext> => {
     const { app, method, result } = context;
 
-    const addNoteSection = async (data: any) => {
-      const noteSections = await app.service('note-sections').find({
+    const addQuizQuestion = async (data: any) => {
+      if (data.type !== 'quiz') return data;
+
+      const quizQuestions = await app.service('quiz-question').find({
         query: {
           // TODO: add changable note section limit per page
-          noteId: data.id,
+          noteSectionId: data.id,
         },
       });
 
       return {
         ...data,
-        sections: noteSections || [],
+        questions: quizQuestions || [],
       };
     };
 
-    // TODO: add when withSection (query parameter) is in url
+    // TODO: add when withQuestions (query parameter) is in url
     if (method === 'find') {
-      context.result.data = await Promise.all(result.data.map(addNoteSection));
+      context.result.data = await Promise.all(result.data.map(addQuizQuestion));
     } else {
-      context.result = await addNoteSection(result);
+      context.result = await addQuizQuestion(result);
     }
-
     return context;
   };
 };

@@ -19,7 +19,15 @@ export default function (app: Application): typeof Model {
       },
       content: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
+      },
+      file: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      type: {
+        type: DataTypes.ENUM('text', 'quiz', 'image', 'voice', 'file'),
+        defaultValue: 'text',
       },
       index: {
         type: DataTypes.INTEGER,
@@ -40,9 +48,10 @@ export default function (app: Application): typeof Model {
   (noteSections as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    const { notes } = models;
+    const { notes, quiz_questions } = models;
 
     noteSections.belongsTo(notes);
+    noteSections.hasMany(quiz_questions);
   };
 
   return noteSections;
