@@ -6,10 +6,10 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const quizQuestions = sequelizeClient.define(
-    'quiz_questions',
+  const quizAnswers = sequelizeClient.define(
+    'quiz_answers',
     {
-      text: {
+      answer: {
         type: DataTypes.STRING(250),
         allowNull: false,
       },
@@ -29,13 +29,13 @@ export default function (app: Application): typeof Model {
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (quizQuestions as any).associate = function (models: any): void {
+  (quizAnswers as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
     const { note_sections } = models;
 
-    quizQuestions.belongsTo(note_sections);
+    quizAnswers.belongsTo(note_sections);
   };
 
-  return quizQuestions;
+  return quizAnswers;
 }

@@ -48,10 +48,10 @@ export default function (app: Application): typeof Model {
   (noteSections as any).associate = function (models: any): void {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    const { notes, quiz_questions } = models;
+    const { notes, quiz_answers } = models;
 
     noteSections.belongsTo(notes);
-    noteSections.hasMany(quiz_questions);
+    noteSections.hasMany(quiz_answers);
   };
 
   return noteSections;

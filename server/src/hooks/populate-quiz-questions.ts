@@ -12,7 +12,6 @@ export default (options = {}): Hook => {
 
       const quizQuestions = await app.service('quiz-question').find({
         query: {
-          // TODO: add changable note section limit per page
           noteSectionId: data.id,
         },
       });
@@ -23,7 +22,6 @@ export default (options = {}): Hook => {
       };
     };
 
-    // TODO: add when withQuestions (query parameter) is in url
     if (method === 'find') {
       context.result.data = await Promise.all(result.data.map(addQuizQuestion));
     } else {

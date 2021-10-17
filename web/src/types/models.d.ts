@@ -16,7 +16,7 @@ export interface IUser {
 }
 
 export interface INote {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   createdAt: string;
@@ -28,17 +28,18 @@ export interface INote {
 export type INoteSectionType = 'text' | 'quiz' | 'image' | 'voice' | 'file';
 
 export interface INoteSection {
+  id?: string;
   subtitle?: string;
   content?: string;
   file?: string;
   type: INoteSectionType;
-  questions?: IPaginatedResult<IQuizQuestion>;
+  answers?: IQuizAnswer[];
   index: number;
   noteId: string;
 }
 
-export interface IQuizQuestion {
-  id: string;
-  text: string;
+export interface IQuizAnswer {
+  id?: string;
+  answer: string;
   isCorrect: boolean;
 }

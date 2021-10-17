@@ -10,7 +10,6 @@ export default (options = {}): Hook => {
     const addNoteSection = async (data: any) => {
       const noteSections = await app.service('note-sections').find({
         query: {
-          // TODO: add changable note section limit per page
           noteId: data.id,
         },
       });
@@ -21,7 +20,6 @@ export default (options = {}): Hook => {
       };
     };
 
-    // TODO: add when withSection (query parameter) is in url
     if (method === 'find') {
       context.result.data = await Promise.all(result.data.map(addNoteSection));
     } else {

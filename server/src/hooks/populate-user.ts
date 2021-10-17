@@ -23,7 +23,6 @@ export default (options = {}): Hook => {
     };
 
     // In a find method we need to process the entire page
-    // TODO: add when withUser (query parameter) is in url
     if (method === 'find') {
       // Map all data to include the `user` information
       context.result.data = await Promise.all(result.data.map(addUser));

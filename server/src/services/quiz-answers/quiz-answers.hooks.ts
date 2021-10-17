@@ -9,10 +9,10 @@ export default {
     all: [],
     find: [],
     get: [],
-    create: [authenticate('jwt'), isNoteOwner('quizQuestion')],
-    update: [authenticate('jwt'), isNoteOwner('quizQuestion')],
-    patch: [authenticate('jwt'), isNoteOwner('quizQuestion')],
-    remove: [authenticate('jwt'), isNoteOwner('quizQuestion')],
+    create: [authenticate('jwt'), isNoteOwner('quizAnswer')],
+    update: [authenticate('jwt'), isNoteOwner('quizAnswer')],
+    patch: [authenticate('jwt'), isNoteOwner('quizAnswer')],
+    remove: [authenticate('jwt'), isNoteOwner('quizAnswer')],
   },
 
   after: {
