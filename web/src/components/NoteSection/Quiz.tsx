@@ -56,8 +56,12 @@ const NoteSectionQuiz: React.FC<Props> = ({
                   </Link>
                 )}
 
-                <p className="leading-relaxed text-xl mb-4">
-                  {section.content && <p className="mb-4">{section.content}</p>}
+                <div>
+                  {section.content && (
+                    <p className="leading-relaxed text-xl mb-4">
+                      {section.content}
+                    </p>
+                  )}
 
                   <div className="lg:rounded-lg p-1 bg-gradient-to-br from-purple-400 via-pink-300 to-blue-400">
                     <img
@@ -66,7 +70,7 @@ const NoteSectionQuiz: React.FC<Props> = ({
                       alt=""
                     />
                   </div>
-                </p>
+                </div>
 
                 <SectionActions />
               </div>
@@ -99,10 +103,10 @@ const NoteSectionQuiz: React.FC<Props> = ({
                     <form className="bg-white lg:rounded-lg">
                       {shuffleArray(section.answers || []).map(
                         (answer: IQuizAnswer) => (
-                          <p>
+                          <div>
                             <input type="radio" name={subtitleId} />
                             {answer.answer}
-                          </p>
+                          </div>
                         )
                       )}
                     </form>
