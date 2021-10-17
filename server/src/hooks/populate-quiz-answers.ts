@@ -7,10 +7,10 @@ export default (options = {}): Hook => {
   return async (context: HookContext): Promise<HookContext> => {
     const { app, method, result } = context;
 
-    const addQuizQuestion = async (data: any) => {
+    const addQuizAnswer = async (data: any) => {
       if (data.type !== 'quiz') return data;
 
-      const quizQuestions = await app.service('quiz-question').find({
+      const quizAnswers = await app.service('quiz-answers').find({
         query: {
           noteSectionId: data.id,
         },
@@ -18,14 +18,14 @@ export default (options = {}): Hook => {
 
       return {
         ...data,
-        questions: quizQuestions || [],
+        answers: quizAnswers || [],
       };
     };
 
     if (method === 'find') {
-      context.result.data = await Promise.all(result.data.map(addQuizQuestion));
+      context.result.data = await Promise.all(result.data.map(addQuizAnswer));
     } else {
-      context.result = await addQuizQuestion(result);
+      context.result = await addQuizAnswer(result);
     }
     return context;
   };
