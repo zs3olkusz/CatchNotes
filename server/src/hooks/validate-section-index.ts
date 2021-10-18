@@ -18,6 +18,8 @@ export default (options = {}): Hook => {
         },
       });
 
+      if (!result.length) return -1;
+
       const idx = (result as any[])[0].index; // if there is no results this could return undefined
 
       return idx !== undefined ? idx : -1;

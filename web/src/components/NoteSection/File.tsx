@@ -64,13 +64,15 @@ const NoteSectionFile: React.FC<Props> = ({
 
                 {/* TODO: move actions to the right */}
                 <div className="flex">
-                  <Link
-                    to={section.file!}
+                  <a
+                    href={section.file!}
+                    target="_blank"
+                    download
                     className="bg-indigo-400 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded inline-flex items-center"
                   >
                     <Download className="w-4 h-4 mr-2" />
                     <span>Download</span>
-                  </Link>
+                  </a>
 
                   <SectionActions />
                 </div>
@@ -100,13 +102,15 @@ const NoteSectionFile: React.FC<Props> = ({
 
                 {/* TODO: move actions to the right */}
                 <div className="flex">
-                  <Link
-                    to={section.file!}
+                  <a
+                    href={section.file!}
+                    target="_blank"
+                    download
                     className="bg-indigo-400 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded inline-flex items-center"
                   >
                     <Download className="w-4 h-4 mr-2" />
                     <span>Download</span>
-                  </Link>
+                  </a>
 
                   <SectionActions />
                 </div>
