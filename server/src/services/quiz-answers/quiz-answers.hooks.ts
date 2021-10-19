@@ -1,8 +1,6 @@
 import * as authentication from '@feathersjs/authentication';
 import isNoteOwner from '../../hooks/is-note-owner';
-import getUser from '../../hooks/get-user';
-import populateUser from '../../hooks/populate-user';
-import populateNoteSections from '../../hooks/populate-note-sections';
+import canAddQuestion from '../../hooks/can-add-question';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -12,16 +10,16 @@ export default {
     all: [],
     find: [],
     get: [],
-    create: [authenticate('jwt'), getUser()],
-    update: [authenticate('jwt'), isNoteOwner('note')],
-    patch: [authenticate('jwt'), isNoteOwner('note')],
-    remove: [authenticate('jwt'), isNoteOwner('note')],
+    create: [authenticate('jwt'), isNoteOwner('quizAnswer'), canAddQuestion()],
+    update: [authenticate('jwt'), isNoteOwner('quizAnswer')],
+    patch: [authenticate('jwt'), isNoteOwner('quizAnswer')],
+    remove: [authenticate('jwt'), isNoteOwner('quizAnswer')],
   },
 
   after: {
     all: [],
     find: [],
-    get: [populateUser(), populateNoteSections()],
+    get: [],
     create: [],
     update: [],
     patch: [],

@@ -1,14 +1,14 @@
-// Initializes the `noteSections` service on path `/note-sections`
+// Initializes the `quizAnswers` service on path `/quiz-answers`
 import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
-import { NoteSections } from './note-sections.class';
-import createModel from '../../models/note-sections.model';
-import hooks from './note-sections.hooks';
+import { QuizAnswers } from './quiz-answers.class';
+import createModel from '../../models/quiz-answers.model';
+import hooks from './quiz-answers.hooks';
 
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    'note-sections': NoteSections & ServiceAddons<any>;
+    'quiz-answers': QuizAnswers & ServiceAddons<any>;
   }
 }
 
@@ -18,10 +18,10 @@ export default function (app: Application): void {
   };
 
   // Initialize our service with any options it requires
-  app.use('/note-sections', new NoteSections(options, app));
+  app.use('/quiz-answers', new QuizAnswers(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('note-sections');
+  const service = app.service('quiz-answers');
 
   service.hooks(hooks);
 }

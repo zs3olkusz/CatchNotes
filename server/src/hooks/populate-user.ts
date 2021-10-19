@@ -12,6 +12,9 @@ export default (options = {}): Hook => {
 
       const user = await app.service('users').get(id);
 
+      delete data.userId;
+      delete user.password;
+
       // Merge the data content to include the `user` object
       return {
         ...data,

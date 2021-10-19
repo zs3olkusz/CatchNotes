@@ -1,3 +1,10 @@
+export interface IPaginatedResult<T> {
+  total: number;
+  limit: number;
+  skip: number;
+  data: T[];
+}
+
 export interface IUser {
   id: string;
   email: string;
@@ -9,7 +16,7 @@ export interface IUser {
 }
 
 export interface INote {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   createdAt: string;
@@ -18,9 +25,21 @@ export interface INote {
   sections: INoteSection[];
 }
 
+export type INoteSectionType = 'text' | 'quiz' | 'image' | 'voice' | 'file';
+
 export interface INoteSection {
-  subtitle: string;
-  content: string;
+  id?: string;
+  subtitle?: string;
+  content?: string;
+  file?: string;
+  type: INoteSectionType;
+  answers?: IQuizAnswer[];
   index: number;
   noteId: string;
+}
+
+export interface IQuizAnswer {
+  id?: string;
+  answer: string;
+  isCorrect: boolean;
 }
