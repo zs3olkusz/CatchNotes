@@ -8,6 +8,7 @@ import SectionActions from './SectionActions';
 
 interface Props {
   idx?: number;
+  id: string;
   noteId: string;
   noteTitle: string;
   noteDescription: string;
@@ -19,6 +20,7 @@ interface Props {
 
 const NoteSectionFile: React.FC<Props> = ({
   idx,
+  id,
   noteId,
   noteTitle,
   noteDescription,
@@ -27,7 +29,7 @@ const NoteSectionFile: React.FC<Props> = ({
   noteUpdatedAt,
   section,
 }: Props) => {
-  const subtitleId = section?.subtitle ? parseId(section?.subtitle) : '';
+  const subtitleId = section?.subtitle ? parseId(section?.subtitle, id) : '';
 
   return (
     <section className="text-gray-600 body-font">

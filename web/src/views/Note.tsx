@@ -32,85 +32,38 @@ const NoteView: React.FC = () => {
   const parseSection = (section: INoteSection, idx: number) => {
     let result;
 
+    const props = {
+      key: section.id,
+      id: section.id!,
+      idx: idx,
+      noteId: id,
+      noteTitle: data?.title!,
+      noteDescription: data?.description!,
+      noteAuthor: data?.user!,
+      noteCreatedAt: data?.createdAt!,
+      noteUpdatedAt: data?.updatedAt!,
+      section: section,
+    };
+
     switch (section.type) {
       case 'quiz':
-        result = (
-          <NoteSectionQuiz
-            key={section.id}
-            idx={idx}
-            noteId={id}
-            noteTitle={data?.title!}
-            noteDescription={data?.description!}
-            noteAuthor={data?.user!}
-            noteCreatedAt={data?.createdAt!}
-            noteUpdatedAt={data?.updatedAt!}
-            section={section}
-          />
-        );
+        result = <NoteSectionQuiz {...props} />;
         break;
 
       case 'image':
-        result = (
-          <NoteSectionImage
-            key={section.id}
-            idx={idx}
-            noteId={id}
-            noteTitle={data?.title!}
-            noteDescription={data?.description!}
-            noteAuthor={data?.user!}
-            noteCreatedAt={data?.createdAt!}
-            noteUpdatedAt={data?.updatedAt!}
-            section={section}
-          />
-        );
+        result = <NoteSectionImage {...props} />;
         break;
 
       case 'voice':
-        result = (
-          <NoteSectionVoice
-            key={section.id}
-            idx={idx}
-            noteId={id}
-            noteTitle={data?.title!}
-            noteDescription={data?.description!}
-            noteAuthor={data?.user!}
-            noteCreatedAt={data?.createdAt!}
-            noteUpdatedAt={data?.updatedAt!}
-            section={section}
-          />
-        );
+        result = <NoteSectionVoice {...props} />;
         break;
 
       case 'file':
-        result = (
-          <NoteSectionFile
-            key={section.id}
-            idx={idx}
-            noteId={id}
-            noteTitle={data?.title!}
-            noteDescription={data?.description!}
-            noteAuthor={data?.user!}
-            noteCreatedAt={data?.createdAt!}
-            noteUpdatedAt={data?.updatedAt!}
-            section={section}
-          />
-        );
+        result = <NoteSectionFile {...props} />;
         break;
 
       default:
-        result = (
-          <NoteSectionText
-            key={section.id}
-            idx={idx}
-            noteId={id}
-            noteTitle={data?.title!}
-            noteDescription={data?.description!}
-            noteAuthor={data?.user!}
-            noteCreatedAt={data?.createdAt!}
-            noteUpdatedAt={data?.updatedAt!}
-            section={section}
-          />
-        );
+        result = <NoteSectionText {...props} />;
         break;
     }
 
