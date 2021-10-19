@@ -75,7 +75,7 @@ const Faq: React.FC = () => {
                                       )}
                                   </div>
                               </div>
-                              {question === 2 && <p className="pt-2 md:pt-3  lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base  xl:text-lg rounded-b-lg">Actually now there is no option to do it. Sorry :C </p>}
+                              {question === 2 && <p className="pt-2 md:pt-3  lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base  xl:text-lg rounded-b-lg">Actually there is no option to do it. Sorry :C </p>}
                           </li>
                           <li className="py-6 border-gray-200 border-solid border-b">
                               <div className="flex justify-between items-center">
@@ -119,7 +119,7 @@ const Faq: React.FC = () => {
                                       )}
                                   </div>
                               </div>
-                              {question === 4 && <p className="pt-2 md:pt-3  lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base  xl:text-lg rounded-b-lg">Actually now there is no option to do it. Sorry :C </p>}
+                              {question === 4 && <p className="pt-2 md:pt-3  lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base  xl:text-lg rounded-b-lg">Actually there is no option to do it. Sorry :C </p>}
                           </li>
                       </ul>
                   </div>
