@@ -149,7 +149,7 @@ const LoginView: React.FC = () => {
           <div className="dark">
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md from-purple-600 via-pink-400 to-blue-500 bg-gradient-to-br focus:from-pink-500 focus:to-red-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md from-blue-500 via-pink-400 to-purple-500 bg-gradient-to-br focus:from-pink-500 focus:to-red-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               disabled={loading}
             >
               Sign in
