@@ -44,7 +44,7 @@ const About: React.FC = () => {
                       Contact
                     </h6>
                     <p className="mb-4 text-blueGray-500">
-                      U can contact with us using this e-mail: CatchNotes@example.com 😁
+                      You can contact with us using this e-mail: CatchNotes@example.com 😁
                     </p>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ const About: React.FC = () => {
                     </div>
                     <h6 className="text-xl mb-1 font-semibold">Updates</h6>
                     <p className="mb-4 text-blueGray-500">
-                      We still working on our site. Check our site frequently for new updates. 😀
+                      We are still working on this site. Check our site frequently for new updates. 😀
                     </p>
                   </div>
                 </div>
