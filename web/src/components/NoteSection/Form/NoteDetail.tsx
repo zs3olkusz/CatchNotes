@@ -34,7 +34,10 @@ const NoteDetailEdit: React.FC<Props> = ({
       </Link>
       <div className="flex flex-col items-center text-center justify-center">
         <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">
-          <Link to={`/users/${author.id}`}>
+          <Link
+            to={`/users/${author.id}`}
+            title={`${author?.firstName} ${author?.lastName}'s profile`}
+          >
             {author?.firstName} {author?.lastName}
           </Link>
         </h2>

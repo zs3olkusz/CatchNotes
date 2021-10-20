@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Check, X } from 'react-feather';
 import type { INoteSection } from '../../../types/models';
 import Checkbox from '../../Input/Checkbox';
 import Input from '../../Input/Input';
@@ -22,10 +23,28 @@ const QuizEdit: React.FC<Props> = ({ idx, section, editSection }: Props) => {
       ...section,
       answers: [...(section.answers || []), { answer, isCorrect }],
     });
+
+    setAnswer('');
   };
 
   return (
     <div>
+      <div>
+        <h3 className="font-bold text-lg mt-2">Answers</h3>
+
+        {section.answers?.map((answer, i) => (
+          <p className="flex items-center my-1" key={i}>
+            {answer.isCorrect ? (
+              <Check className="text-green-400" />
+            ) : (
+              <X className="text-red-500" />
+            )}
+
+            <span className="block ml-1">{answer.answer}</span>
+          </p>
+        ))}
+      </div>
+
       <Input
         label="Quiz answer"
         placeholder="Answer"
@@ -40,11 +59,16 @@ const QuizEdit: React.FC<Props> = ({ idx, section, editSection }: Props) => {
         label="Is correct"
         name="isCorrect"
         value={String(isCorrect)}
-        onChange={(e) => setIsCorrect(() => !!e.target.value)}
+        onChange={(e) => setIsCorrect(() => e.target.checked)}
         className="my-2"
       />
 
-      <button onClick={addAnswer}>Add</button>
+      <button
+        onClick={addAnswer}
+        className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+      >
+        Add
+      </button>
     </div>
   );
 };

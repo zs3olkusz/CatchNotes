@@ -18,6 +18,7 @@ const VoiceEdit: React.FC<Props> = ({ idx, section, editSection }: Props) => {
       required
       value={section.file || ''}
       onChange={(e) => editSection(idx, { ...section, file: e.target.value })}
+      className="my-2"
     />
   );
 };

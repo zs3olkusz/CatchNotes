@@ -42,14 +42,17 @@ const SectionForm: React.FC<Props> = ({
 
     const props = {
       key: idx,
-      idx: idx,
-      noteTitle: noteTitle,
-      noteDescription: noteDescription,
+      idx,
+      noteId,
+      noteTitle,
+      noteDescription,
       noteAuthor: user,
-      section: section,
-      editSection: editSection,
-      removeSection: removeSection,
-      handleInputChange: handleInputChange,
+      noteCreatedAt,
+      noteUpdatedAt,
+      section,
+      editSection,
+      removeSection,
+      handleInputChange,
     };
 
     switch (section.type) {
@@ -91,17 +94,19 @@ const SectionForm: React.FC<Props> = ({
               />
               <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 <div className="mb-2">
-                  <label htmlFor="title" className="sr-only">
-                    Title
+                  <label htmlFor={`subtitle-${idx}`} className="sr-only">
+                    Subtitle
                   </label>
                   <input
-                    id="title"
-                    name="title"
+                    id={`subtitle-${idx}`}
+                    name={`subtitle-${idx}`}
                     type="text"
-                    className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Title"
+                    className="font-semibold appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    placeholder="Subtitle"
                     value={section.subtitle}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      editSection(idx, { ...section, subtitle: e.target.value })
+                    }
                   />
                 </div>
 
@@ -128,17 +133,19 @@ const SectionForm: React.FC<Props> = ({
             <div className="flex flex-col sm:flex-row mt-10">
               <div className="mt-4 pt-4 sm:mt-0 text-center sm:text-left w-full">
                 <div className="mb-2 w-full">
-                  <label htmlFor="title" className="sr-only">
-                    Title
+                  <label htmlFor={`subtitle-${idx}`} className="sr-only">
+                    Subtitle
                   </label>
                   <input
-                    id="title"
-                    name="title"
+                    id={`subtitle-${idx}`}
+                    name={`subtitle-${idx}`}
                     type="text"
-                    className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Title"
+                    className="font-semibold appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    placeholder="Subtitle"
                     value={section.subtitle}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      editSection(idx, { ...section, subtitle: e.target.value })
+                    }
                   />
                 </div>
 

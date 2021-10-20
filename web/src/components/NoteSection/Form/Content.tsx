@@ -43,9 +43,12 @@ const ContentForm: React.FC<Props> = ({ idx, section, editSection }: Props) => {
     <div>
       <ReactQuill
         theme="snow"
-        value={section.content}
-        onChange={(content: string) =>
-          editSection(idx, { ...section, content })
+        value={section.content || ''}
+        onChange={(html) =>
+          editSection(idx, { ...section, content: html })
+        }
+        onBlur={(previousRange: any, source: any, editor: any) =>
+          editSection(idx, { ...section, content: editor.getHTML() })
         }
         modules={modules}
         formats={formats}

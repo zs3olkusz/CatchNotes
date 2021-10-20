@@ -42,7 +42,7 @@ const NoteCreateView: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container px-5 py-12 mx-auto flex flex-col">
       {sections.map((section, idx) => (
         <SectionForm
           key={idx}
@@ -56,7 +56,12 @@ const NoteCreateView: React.FC = () => {
           handleInputChange={handleInputChange}
         />
       ))}
-      <button onClick={addSection}>add</button>
+      <button
+        onClick={addSection}
+        className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+      >
+        Add section
+      </button>
     </div>
   );
 };
