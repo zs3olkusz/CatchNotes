@@ -156,7 +156,7 @@ const HomeView: React.FC = () => {
                       to="/"
                       className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white  from-purple-500 to-pink-600 bg-gradient-to-br hover:from-purple-400 hover:to-pink-500 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                     >
-                      Colab
+                      Collab
                     </Link>
                   </div>
                 </div>
