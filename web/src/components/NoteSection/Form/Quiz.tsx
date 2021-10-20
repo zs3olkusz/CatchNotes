@@ -50,7 +50,7 @@ const QuizEdit: React.FC<Props> = ({ idx, section, editSection }: Props) => {
         placeholder="Answer"
         name="answer"
         type="text"
-        required
+        required={false}
         value={answer}
         onChange={(e) => setAnswer(() => e.target.value)}
         className="my-2"

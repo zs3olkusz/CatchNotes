@@ -2,6 +2,7 @@ import { format, formatDistance } from 'date-fns';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import type { IUser } from '../../../types/models';
+import Input from '../../Input/Input';
 
 interface Props {
   title: string;
@@ -43,35 +44,27 @@ const NoteDetailEdit: React.FC<Props> = ({
         </h2>
         <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
 
-        <div className="my-4">
-          <label htmlFor="title" className="sr-only">
-            Title
-          </label>
-          <input
-            id="title"
-            name="title"
-            type="text"
-            className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm font-bold"
-            placeholder="Title"
-            value={title}
-            onChange={handleInputChange}
-          />
-        </div>
+        <Input
+          label="Title"
+          name="title"
+          type="text"
+          placeholder="Title"
+          required
+          value={title}
+          onChange={handleInputChange}
+          className="my-2 font-semibold"
+        />
 
-        <div>
-          <label htmlFor="description" className="sr-only">
-            Description
-          </label>
-          <input
-            id="description"
-            name="description"
-            type="text"
-            className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-            placeholder="Description"
-            value={description}
-            onChange={handleInputChange}
-          />
-        </div>
+        <Input
+          label="Description"
+          name="description"
+          type="text"
+          placeholder="Description"
+          required
+          value={description}
+          onChange={handleInputChange}
+          className="my-2"
+        />
 
         {createdAt && (
           <>

@@ -78,7 +78,7 @@ const NoteView: React.FC = () => {
         <p>{error?.message || error}</p>
       ) : (
         data && (
-          <>{data.sections.map((section, idx) => parseSection(section, idx))}</>
+          <>{data.sections?.map((section, idx) => parseSection(section, idx))}</>
         )
       )}
     </div>
