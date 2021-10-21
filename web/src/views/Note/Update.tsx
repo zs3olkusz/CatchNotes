@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { Redirect, useHistory } from 'react-router-dom';
-import { api } from '../../api';
+import { api, request } from '../../api';
 import { useAuthState } from '../../auth';
 import SectionForm from '../../components/NoteSection/Form/Section';
 import { INote, INoteSection, IQuizAnswer } from '../../types/models';
@@ -22,9 +22,9 @@ const NoteUpdateView: React.FC<Props> = ({
   const { isLogged, user } = useAuthState();
   const history = useHistory();
 
-  const [sections, setSections] = useState<INoteSection[]>([
-    { type: 'text', index: 0 },
-  ]);
+  const [sections, setSections] = useState<INoteSection[]>(
+    data?.sections || [{ type: 'text', index: 0 }]
+  );
 
   const [details, setDetails] = useState({
     title: '',
@@ -77,11 +77,18 @@ const NoteUpdateView: React.FC<Props> = ({
     ]);
   };
 
-  const removeSection = (idx: number) => {
+  const sectionDeleteMutation = useMutation(
+    async (id: string) => await request('DELETE', `note-sections/${id}/`)
+  );
+
+  const removeSection = async (idx: number) => {
+    sections[idx].id &&
+      (await sectionDeleteMutation.mutateAsync(sections[idx].id!));
+
     setSections(() => [...sections.slice(0, idx), ...sections.slice(idx + 1)]);
   };
 
-  const createNote = async (e: React.FormEvent) => {
+  const updateNote = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!isLogged || !details.title.trim() || !user.id) return;
@@ -136,8 +143,34 @@ const NoteUpdateView: React.FC<Props> = ({
   return (
     <form
       className="container px-5 py-12 mx-auto flex flex-col"
-      onSubmit={createNote}
+      onSubmit={updateNote}
     >
+      {sections.map((section, idx) => (
+        <SectionForm
+          key={idx}
+          idx={idx}
+          noteTitle={details.title}
+          noteDescription={details.description}
+          noteAuthor={user}
+          section={section}
+          editSection={editSection}
+          removeSection={removeSection}
+          handleInputChange={handleInputChange}
+        />
+      ))}
+      <button
+        onClick={addSection}
+        className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm my-2"
+      >
+        Add section
+      </button>
+      <button
+        type="submit"
+        className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+        disabled={noteMutation.isLoading}
+      >
+        Update note
+      </button>
     </form>
   );
 };

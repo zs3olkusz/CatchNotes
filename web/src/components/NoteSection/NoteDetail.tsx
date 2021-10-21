@@ -10,6 +10,7 @@ interface Props {
   author: IUser;
   createdAt: string;
   updatedAt: string;
+  deleteNote: () => void;
 }
 
 const NoteDetail: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const NoteDetail: React.FC<Props> = ({
   author,
   createdAt,
   updatedAt,
+  deleteNote,
 }: Props) => {
   const { url } = useRouteMatch();
   const { isLogged, user } = useAuthState();
@@ -67,13 +69,22 @@ const NoteDetail: React.FC<Props> = ({
         </p>
 
         {isLogged && user.id === author.id && (
-          <Link
-            to={`${url}/update`}
-            title="update note"
-            className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center"
-          >
-            Update Note
-          </Link>
+          <>
+            <Link
+              to={`${url}/update`}
+              title="update note"
+              className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center my-1"
+            >
+              Update Note
+            </Link>
+            <button
+              title="delete note"
+              className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center my-1"
+              onClick={deleteNote}
+            >
+              Delete Note
+            </button>
+          </>
         )}
       </div>
     </div>

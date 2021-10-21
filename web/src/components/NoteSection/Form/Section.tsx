@@ -88,8 +88,8 @@ const SectionForm: React.FC<Props> = ({
           {idx === 0 ? (
             <div className="flex flex-col sm:flex-row mt-10">
               <NoteDetail
-                title={noteTitle!}
-                description={noteDescription!}
+                title={noteTitle || ''}
+                description={noteDescription || ''}
                 author={noteAuthor}
                 handleInputChange={handleInputChange}
               />

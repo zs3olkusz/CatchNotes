@@ -28,7 +28,7 @@ const NoteView: React.FC = () => {
                     id={section.id!}
                     noteId={id}
                     noteTitle={data.title}
-                    noteDescription={data.title}
+                    noteDescription={data.description}
                     noteAuthor={data.user!}
                     noteCreatedAt={data.createdAt!}
                     noteUpdatedAt={data.updatedAt!}

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useMutation } from 'react-query';
 import NoteDetail from './NoteDetail';
 import SImage from './Image';
 import SQuiz from './Quiz';
 import SVoice from './Voice';
 import SectionActions from './SectionActions';
+import { request } from '../../api';
 import { useAuthState } from '../../auth';
 import { INoteSection, IUser } from '../../types/models';
 import { parseId } from '../../utils/parseId';
@@ -32,7 +34,15 @@ const Section: React.FC<Props> = ({
   section,
 }: Props) => {
   const { user } = useAuthState();
+  const history = useHistory();
   const subtitleId = section?.subtitle ? parseId(section?.subtitle, id) : '';
+
+  const noteDeleteMutation = useMutation(
+    async () => await request('DELETE', `notes/${noteId}/`),
+    {
+      onSuccess: () => history.push('/notes'),
+    }
+  );
 
   const parseSection = () => {
     let result;
@@ -83,6 +93,7 @@ const Section: React.FC<Props> = ({
                 author={noteAuthor}
                 createdAt={noteCreatedAt}
                 updatedAt={noteUpdatedAt}
+                deleteNote={async () => await noteDeleteMutation.mutateAsync()}
               />
               <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 <div className="mb-2">
