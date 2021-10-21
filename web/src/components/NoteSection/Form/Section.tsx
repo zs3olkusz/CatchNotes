@@ -1,6 +1,4 @@
 import React from 'react';
-import { useAuthState } from '../../../auth';
-import { INoteSection, IUser } from '../../../types/models';
 import NoteDetail from './NoteDetail';
 import FileEdit from './File';
 import ImageEdit from './Image';
@@ -8,6 +6,9 @@ import QuizEdit from './Quiz';
 import VoiceEdit from './Voice';
 import SectionActions from './SectionActions';
 import ContentForm from './Content';
+import Input from '../../Input/Input';
+import { useAuthState } from '../../../auth';
+import type { INoteSection, IUser } from '../../../types/models';
 
 interface Props {
   idx: number;
@@ -93,22 +94,17 @@ const SectionForm: React.FC<Props> = ({
                 handleInputChange={handleInputChange}
               />
               <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                <div className="mb-2">
-                  <label htmlFor={`subtitle-${idx}`} className="sr-only">
-                    Subtitle
-                  </label>
-                  <input
-                    id={`subtitle-${idx}`}
-                    name={`subtitle-${idx}`}
-                    type="text"
-                    className="font-semibold appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Subtitle"
-                    value={section.subtitle}
-                    onChange={(e) =>
-                      editSection(idx, { ...section, subtitle: e.target.value })
-                    }
-                  />
-                </div>
+                <Input
+                  name={`subtitle-${idx}`}
+                  placeholder="Subtitle"
+                  type="text"
+                  required
+                  value={section.subtitle || ''}
+                  onChange={(e) =>
+                    editSection(idx, { ...section, subtitle: e.target.value })
+                  }
+                  className="mb-2 w-full"
+                />
 
                 <div>
                   <ContentForm
@@ -132,22 +128,17 @@ const SectionForm: React.FC<Props> = ({
           ) : (
             <div className="flex flex-col sm:flex-row mt-10">
               <div className="mt-4 pt-4 sm:mt-0 text-center sm:text-left w-full">
-                <div className="mb-2 w-full">
-                  <label htmlFor={`subtitle-${idx}`} className="sr-only">
-                    Subtitle
-                  </label>
-                  <input
-                    id={`subtitle-${idx}`}
-                    name={`subtitle-${idx}`}
-                    type="text"
-                    className="font-semibold appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Subtitle"
-                    value={section.subtitle}
-                    onChange={(e) =>
-                      editSection(idx, { ...section, subtitle: e.target.value })
-                    }
-                  />
-                </div>
+                <Input
+                  name={`subtitle-${idx}`}
+                  placeholder="Subtitle"
+                  type="text"
+                  required
+                  value={section.subtitle || ''}
+                  onChange={(e) =>
+                    editSection(idx, { ...section, subtitle: e.target.value })
+                  }
+                  className="mb-2 w-full"
+                />
 
                 <div className="w-full">
                   <ContentForm

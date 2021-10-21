@@ -1,8 +1,8 @@
 import { format, formatDistance } from 'date-fns';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import type { IUser } from '../../../types/models';
 import Input from '../../Input/Input';
+import type { IUser } from '../../../types/models';
 
 interface Props {
   title: string;

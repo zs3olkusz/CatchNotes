@@ -1,7 +1,7 @@
 import React from 'react';
 import { X } from 'react-feather';
-import { INoteSectionType } from '../../../types/models';
 import SelectInput from '../../Input/Select';
+import { INoteSectionType } from '../../../types/models';
 
 interface Props {
   idx: number;

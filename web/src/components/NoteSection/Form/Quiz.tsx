@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Check, X } from 'react-feather';
-import type { INoteSection } from '../../../types/models';
-import Checkbox from '../../Input/Checkbox';
 import Input from '../../Input/Input';
+import Checkbox from '../../Input/Checkbox';
+import type { INoteSection } from '../../../types/models';
 
 interface Props {
   idx: number;

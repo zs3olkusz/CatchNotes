@@ -1,6 +1,6 @@
 import React from 'react';
-import type { INoteSection } from '../../../types/models';
 import Input from '../../Input/Input';
+import type { INoteSection } from '../../../types/models';
 
 interface Props {
   idx: number;

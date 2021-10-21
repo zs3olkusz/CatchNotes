@@ -1,10 +1,10 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { Redirect, useHistory } from 'react-router-dom';
-import { api } from '../api';
-import { useAuthState } from '../auth';
-import SectionForm from '../components/NoteSection/Form/Section';
-import { INote, INoteSection, IQuizAnswer } from '../types/models';
+import { api } from '../../api';
+import { useAuthState } from '../../auth';
+import SectionForm from '../../components/NoteSection/Form/Section';
+import { INote, INoteSection, IQuizAnswer } from '../../types/models';
 
 const NoteCreateView: React.FC = () => {
   const history = useHistory();
@@ -41,10 +41,7 @@ const NoteCreateView: React.FC = () => {
   };
 
   const addSection = () => {
-    setSections((sections) => [
-      ...sections,
-      { type: 'text', index: 0 },
-    ]);
+    setSections((sections) => [...sections, { type: 'text', index: 0 }]);
   };
 
   const editSection = (idx: number, data: INoteSection) => {
@@ -59,7 +56,7 @@ const NoteCreateView: React.FC = () => {
     setSections(() => [...sections.slice(0, idx), ...sections.slice(idx + 1)]);
   };
 
-  const createNote = async (e: FormEvent) => {
+  const createNote = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!isLogged || !details.title.trim() || !user.id) return;

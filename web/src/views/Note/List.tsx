@@ -2,9 +2,9 @@ import { format, formatDistance } from 'date-fns';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import { api } from '../api';
-import { useAuthState } from '../auth';
-import { INote } from '../types/models';
+import { api } from '../../api';
+import { useAuthState } from '../../auth';
+import { INote } from '../../types/models';
 
 function useUserNotes(userId: string): any {
   return useQuery(['user_notes', userId], async () => {
@@ -71,7 +71,7 @@ const NoteListView: React.FC = () => {
         </div>
       </div>
       <Link
-        to="/note"
+        to="/notes/create"
         title="create note"
         className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center"
       >
