@@ -32,6 +32,8 @@ const NoteDetail: React.FC<Props> = ({
       >
         <img
           className="rounded-full"
+          width="256"
+          height="256"
           src={author.avatar}
           alt={`${author.firstName} ${author.lastName}'s avatar`}
         />
