@@ -1,3 +1,3 @@
-export function parseId(text: string): string {
-  return text.split(' ').join('-');
+export function parseId(text: string, id: string): string {
+  return id + '-' + text.split(' ').join('-');
 }

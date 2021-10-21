@@ -1,6 +1,7 @@
 import { format, formatDistance } from 'date-fns';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
+import { useAuthState } from '../../auth';
 import { IUser } from '../../types/models';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
   author: IUser;
   createdAt: string;
   updatedAt: string;
+  deleteNote: () => void;
 }
 
 const NoteDetail: React.FC<Props> = ({
@@ -17,7 +19,11 @@ const NoteDetail: React.FC<Props> = ({
   author,
   createdAt,
   updatedAt,
+  deleteNote,
 }: Props) => {
+  const { url } = useRouteMatch();
+  const { isLogged, user } = useAuthState();
+
   return (
     <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
       <Link
@@ -26,6 +32,8 @@ const NoteDetail: React.FC<Props> = ({
       >
         <img
           className="rounded-full"
+          width="256"
+          height="256"
           src={author.avatar}
           alt={`${author.firstName} ${author.lastName}'s avatar`}
         />
@@ -38,7 +46,7 @@ const NoteDetail: React.FC<Props> = ({
         </h2>
         <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
 
-        <h5 className="text-base font-bold">{title}</h5>
+        <h3 className="text-base font-bold">{title}</h3>
         <p className="text-base">{description}</p>
         <div className="w-24 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
 
@@ -61,6 +69,25 @@ const NoteDetail: React.FC<Props> = ({
             </time>
           )}
         </p>
+
+        {isLogged && user.id === author.id && (
+          <>
+            <Link
+              to={`${url}/update`}
+              title="update note"
+              className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center my-1"
+            >
+              Update Note
+            </Link>
+            <button
+              title="delete note"
+              className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center my-1"
+              onClick={deleteNote}
+            >
+              Delete Note
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

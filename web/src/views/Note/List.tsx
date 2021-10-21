@@ -2,9 +2,9 @@ import { format, formatDistance } from 'date-fns';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import { api } from '../api';
-import { useAuthState } from '../auth';
-import { INote } from '../types/models';
+import { api } from '../../api';
+import { useAuthState } from '../../auth';
+import { INote } from '../../types/models';
 
 function useUserNotes(userId: string): any {
   return useQuery(['user_notes', userId], async () => {
@@ -34,7 +34,8 @@ const NoteListView: React.FC = () => {
               {error.message || error}
             </h2>
           ) : (
-            data.data && data.data.map((note: INote) => (
+            data.data &&
+            data.data.map((note: INote) => (
               <Link
                 to={`/notes/${note.id}`}
                 className="py-4 flex flex-wrap md:flex-nowrap mb-1 bg-gradient-to-r from-blue-500 via-pink-400 to-purple-500 rounded-lg"
@@ -53,11 +54,11 @@ const NoteListView: React.FC = () => {
                     <p className="text-white text-base md:text-lg capitalize mx-5">
                       <time
                         dateTime={format(
-                          new Date(note.createdAt),
+                          new Date(note.createdAt!),
                           "yyyy-MM-dd'T'HH:mm:ss"
                         )}
                       >
-                        {formatDistance(new Date(note.createdAt), new Date(), {
+                        {formatDistance(new Date(note.createdAt!), new Date(), {
                           addSuffix: true,
                         })}
                       </time>
@@ -69,6 +70,13 @@ const NoteListView: React.FC = () => {
           )}
         </div>
       </div>
+      <Link
+        to="/notes/create"
+        title="create note"
+        className="max-w-2xl mx-auto appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center"
+      >
+        Create note
+      </Link>
     </section>
   );
 };

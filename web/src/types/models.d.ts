@@ -19,10 +19,11 @@ export interface INote {
   id?: string;
   title: string;
   description: string;
-  createdAt: string;
-  updatedAt: string;
-  user: IUser;
-  sections: INoteSection[];
+  createdAt?: string;
+  updatedAt?: string;
+  userId?: string;
+  user?: IUser;
+  sections?: INoteSection[];
 }
 
 export type INoteSectionType = 'text' | 'quiz' | 'image' | 'voice' | 'file';
@@ -35,11 +36,12 @@ export interface INoteSection {
   type: INoteSectionType;
   answers?: IQuizAnswer[];
   index: number;
-  noteId: string;
+  noteId?: string;
 }
 
 export interface IQuizAnswer {
   id?: string;
   answer: string;
   isCorrect: boolean;
+  noteSectionId?: string;
 }
