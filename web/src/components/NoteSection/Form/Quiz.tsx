@@ -54,6 +54,7 @@ const QuizEdit: React.FC<Props> = ({ idx, section, editSection }: Props) => {
         value={answer}
         onChange={(e) => setAnswer(() => e.target.value)}
         className="my-2"
+        rounded={{ top: true, bottom: true }}
       />
       <Checkbox
         label="Is correct"

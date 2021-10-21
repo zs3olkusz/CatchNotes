@@ -104,6 +104,7 @@ const SectionForm: React.FC<Props> = ({
                     editSection(idx, { ...section, subtitle: e.target.value })
                   }
                   className="mb-2 w-full"
+                  rounded={{ top: true, bottom: true }}
                 />
 
                 <div>
@@ -138,6 +139,7 @@ const SectionForm: React.FC<Props> = ({
                     editSection(idx, { ...section, subtitle: e.target.value })
                   }
                   className="mb-2 w-full"
+                  rounded={{ top: true, bottom: true }}
                 />
 
                 <div className="w-full">

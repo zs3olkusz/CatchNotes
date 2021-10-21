@@ -55,6 +55,7 @@ const NoteDetailEdit: React.FC<Props> = ({
           value={title}
           onChange={handleInputChange}
           className="my-2 font-semibold"
+          rounded={{ top: true, bottom: true }}
         />
 
         <Input
@@ -66,6 +67,7 @@ const NoteDetailEdit: React.FC<Props> = ({
           value={description}
           onChange={handleInputChange}
           className="my-2"
+          rounded={{ top: true, bottom: true }}
         />
 
         {createdAt && (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from '../../utils/classNames';
 
 function parseLabel(text: string): string {
   return text.toLowerCase().split(' ').join('-');
@@ -14,6 +15,7 @@ interface Props {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  rounded?: { top?: boolean; bottom?: boolean };
 }
 
 const Input: React.FC<Props> = ({
@@ -26,6 +28,7 @@ const Input: React.FC<Props> = ({
   value,
   onChange,
   className,
+  rounded,
 }: Props) => {
   const parsed = parseLabel(label || '');
 
@@ -43,7 +46,11 @@ const Input: React.FC<Props> = ({
         type={type}
         autoComplete={autoComplete}
         required={required}
-        className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+        className={classNames(
+          'appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm',
+          rounded?.top ? 'rounded-t-md' : '',
+          rounded?.bottom ? 'rounded-b-md' : ''
+        )}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

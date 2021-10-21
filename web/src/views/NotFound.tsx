@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const NotFoundView: React.FC = () => {
-  return (
-    <div>
-      not found
-    </div>
-  )
-}
+  return <div>not found</div>;
+};
 
-export default NotFoundView
+export default NotFoundView;

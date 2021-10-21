@@ -138,7 +138,7 @@ const NoteUpdateView: React.FC<Props> = ({
     }
   };
 
-  if (!isLogged) return <Redirect to="/login" />;
+  if (!isLogged || user.id !== data?.user?.id) return <Redirect to="/login" />;
 
   return (
     <form

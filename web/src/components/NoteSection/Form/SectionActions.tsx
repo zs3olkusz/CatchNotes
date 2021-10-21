@@ -23,6 +23,7 @@ const SectionActions: React.FC<Props> = ({
         selected={type}
         setSelected={setType}
         className="w-28 3xl:w-full"
+        rounded={{ top: true, bottom: true }}
       />
 
       <div className="flex-grow"></div>

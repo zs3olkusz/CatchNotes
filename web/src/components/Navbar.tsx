@@ -25,6 +25,8 @@ const Navbar: React.FC = () => {
                   className="h-12 w-auto sm:h-14"
                   src={logo}
                   alt="CatchNOTE logo"
+                  height="48"
+                  width="100"
                 />
               </Link>
             </div>
@@ -120,7 +122,13 @@ const Navbar: React.FC = () => {
               <div className="pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                   <Link to="/" title="home">
-                    <img className="h-8 w-auto" src={logo} alt="Logo" />
+                    <img
+                      className="h-8 w-auto"
+                      src={logo}
+                      alt="Logo"
+                      height="32"
+                      width="60"
+                    />
                   </Link>
                   <div className="-mr-2">
                     <Popover.Button

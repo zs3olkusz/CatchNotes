@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import home from '../assets/home.jpeg';
 
 const HomeView: React.FC = () => {
   return (
@@ -61,8 +62,10 @@ const HomeView: React.FC = () => {
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <img
             className="object-cover md:h-auto lg:h-full"
-            src="https://zyskiwanieprzewagi.com/wp-content/uploads/2019/10/jak-robic%CC%81-notatki-do-szko%C5%82y-lub-na-uczelnie%CC%A8-1024x683.jpg"
+            src={home}
             alt="taking note image"
+            width="640"
+            height="640"
           />
         </div>
       </div>

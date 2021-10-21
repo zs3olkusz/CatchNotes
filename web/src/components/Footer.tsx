@@ -1,14 +1,25 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin } from 'react-feather';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Footer: React.FC = () => {
   return (
     <footer className="text-gray-600 body-font bottom-0">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <img className="w-30 h-16 " src={logo} alt="CatchNOTE logo" />
-        </a>
+        <Link
+          to="/"
+          title="home"
+          className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+        >
+          <img
+            className="w-30 h-16 "
+            src={logo}
+            alt="CatchNOTE logo"
+            height="64"
+            width="160"
+          />
+        </Link>
         <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © {new Date().getFullYear()} CatchNOTE
         </p>

@@ -19,6 +19,7 @@ const FileEdit: React.FC<Props> = ({ idx, section, editSection }: Props) => {
       value={section.file || ''}
       onChange={(e) => editSection(idx, { ...section, file: e.target.value })}
       className="my-2"
+      rounded={{ top: true, bottom: true }}
     />
   );
 };

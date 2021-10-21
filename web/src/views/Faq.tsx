@@ -4,14 +4,14 @@ const Faq: React.FC = () => {
   const [question, setquestion] = useState<number | null>(0);
   return (
     <div className="pt-16">
-      <div className="container mx-auto pt-16 bg-gray-100">
+      <div className="container max-w-7xl mx-auto pt-16 bg-gray-100">
         <div className="text-center pb-3 md:pb-10 xl:pb-20">
           {/*<p className="text-gray-500 text-base lg:text-lg uppercase leading-tight mb-4"></p>*/}
           <h1 className="px-2 xl:px-0 xl:text-5xl md:text-3xl text-2xl font-extrabold text-gray-800">
             Frequently Asked Questions
           </h1>
         </div>
-        <div className="w-10/12 mx-auto">
+        <div className="max-w-7xl w-10/12 mx-auto">
           <ul>
             <li className="py-6 border-gray-200 border-solid border-b">
               <div className="flex justify-between items-center">
