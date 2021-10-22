@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import { Menu } from 'react-feather';
+import { Menu, Moon, Sun } from 'react-feather';
 import { Link } from 'react-router-dom';
 import { logout, useAuthDispatch, useAuthState } from '../auth';
 import logo from '../assets/logo.png';
+import { useDarkMode } from '../hooks/useDarkMode';
 
 const Navbar: React.FC = () => {
   const dispatch = useAuthDispatch();
@@ -13,12 +14,14 @@ const Navbar: React.FC = () => {
     await logout(dispatch);
   };
 
+  const [colorTheme, setTheme] = useDarkMode();
+
   return (
     <>
-      <Popover className="dark relative bg-white" as="nav">
-        <div className=" bg-white dark:bg-black max-w-7xl mx-auto px-4 sm:px-6 text-black text-opacity-50 dark:text-white dark:text-opacity-50">
-          <div className=" dark flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-            <div className="flex justify-start lg:w-0 lg:flex-1">
+      <Popover className="relative bg-white dark:bg-gray-800 dark:text-white dark:text-opacity-50" as="nav">
+        <div className="bg-white max-w-7xl mx-auto px-4 sm:px-6 text-black text-opacity-50 dark:bg-gray-800 dark:text-white dark:text-opacity-50">
+          <div className="flex justify-between items-center border-b-2 dark:border-gray-800 border-gray-100 py-6 md:justify-start md:space-x-10 dark:bg-gray-800 dark:text-white dark:text-opacity-50">
+            <div className=" flex justify-start lg:w-0 lg:flex-1 dark:bg-gray-800 dark:text-white dark:text-opacity-50">
               <Link to="/" title="home">
                 <span className="sr-only">CatchNOTE</span>
                 <img
@@ -39,47 +42,49 @@ const Navbar: React.FC = () => {
             <nav className="hidden md:flex space-x-10">
               <Link
                 to="/notes"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                 title="notes"
               >
                 <span>Notes</span>
               </Link>
               <Link
                 to="/"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                 title="collab"
               >
                 <span>Collab</span>
               </Link>
               <Link
                 to="/"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                 title="home"
               >
                 <span>Home</span>
               </Link>
               <Link
                 to="/faq"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                 title="FAQ"
               >
                 FAQ
               </Link>
               <Link
                 to="/about"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                 title="about"
               >
                 About
               </Link>
-              <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input
-                  type="checkbox"
-                  name="toggle"
-                  id="toggle"
-                  className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                />
-                <label className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+              <div className="w-10 mr-2 select-none transition duration-200 ease-in">
+                <span 
+                onClick = {() => setTheme(()=>colorTheme)}
+                className = "w-7 h-7 bg-purple-500 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center">
+                  {colorTheme === "light" ? (
+                    <Sun />
+                  ) : (
+                    <Moon />
+                  )}
+                </span>
               </div>
             </nav>
             {isLogged ? (
@@ -97,7 +102,7 @@ const Navbar: React.FC = () => {
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 <Link
                   to="/login"
-                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                  className="whitespace-nowrap text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                   title="login"
                 >
                   Sign in

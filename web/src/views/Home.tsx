@@ -4,12 +4,12 @@ import home from '../assets/home.jpeg';
 
 const HomeView: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="relative bg-white overflow-hidden">
+    <div className="max-w-7xl mx-auto ">
+      <div className="relative bg-whiteoverflow-hidden dark:bg-gray-600 dark:text-white dark:text-opacity-50">
         <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 dark:bg-gray-600 dark:text-white dark:text-opacity-50">
             <svg
-              className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+              className="dark:text-gray-600 hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
               fill="currentColor"
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
@@ -24,13 +24,13 @@ const HomeView: React.FC = () => {
 
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="text-center md:text-left">
-                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <h1 className="text-4xl tracking-tight font-extrabold dark:text-gray-200 text-gray-900 sm:text-5xl md:text-6xl">
                   <span className="block xl:inline">Write </span>
-                  <span className="block text-purple-700 xl:inline">
+                  <span className="block dark:text-purple-500 text-purple-700 xl:inline">
                     your notes
                   </span>
                 </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                <p className="mt-3 text-base dark:text-gray-200 text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   On this website you can create notes that will help you in
                   your future education. Learn more with your friends using our
                   site. Have fun ! :)

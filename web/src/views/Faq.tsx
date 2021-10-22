@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const Faq: React.FC = () => {
   const [question, setquestion] = useState<number | null>(0);
   return (
-    <div className="pt-16">
-      <div className="container max-w-7xl mx-auto pt-16 bg-gray-100">
+    <div className="pt-0">
+      <div className="container max-w-7xl mx-auto pt-16 bg-gray-100 dark:bg-gray-300 rounded-r-2xl rounded-l-2xl">
         <div className="text-center pb-3 md:pb-10 xl:pb-20">
           {/*<p className="text-gray-500 text-base lg:text-lg uppercase leading-tight mb-4"></p>*/}
           <h1 className="px-2 xl:px-0 xl:text-5xl md:text-3xl text-2xl font-extrabold text-gray-800">
@@ -63,7 +63,7 @@ const Faq: React.FC = () => {
                 </div>
               </div>
               {question === 0 && (
-                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base xl:text-lg rounded-b-lg">
+                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 dark:bg-gray-300 text-sm md:text-base xl:text-lg rounded-b-lg">
                   The maximum number of notes that you can create is unlimited.
                   :)
                 </p>
@@ -119,7 +119,7 @@ const Faq: React.FC = () => {
                 </div>
               </div>
               {question === 1 && (
-                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base xl:text-lg rounded-b-lg">
+                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 dark:bg-gray-300 text-sm md:text-base xl:text-lg rounded-b-lg">
                   You must generate an invite code and give it to your friend.
                   Next he must just click on invitation link and thats it. :)
                 </p>
@@ -175,7 +175,7 @@ const Faq: React.FC = () => {
                 </div>
               </div>
               {question === 2 && (
-                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base xl:text-lg rounded-b-lg">
+                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 dark:bg-gray-300 text-sm md:text-base xl:text-lg rounded-b-lg">
                   Actually there is no option to do it. Sorry :C{' '}
                 </p>
               )}
@@ -230,7 +230,7 @@ const Faq: React.FC = () => {
                 </div>
               </div>
               {question === 3 && (
-                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base xl:text-lg rounded-b-lg">
+                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 dark:bg-gray-300 text-sm md:text-base xl:text-lg rounded-b-lg">
                   You must click on CREATE NOTE button. It is that simple :){' '}
                 </p>
               )}
@@ -285,7 +285,7 @@ const Faq: React.FC = () => {
                 </div>
               </div>
               {question === 4 && (
-                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 text-sm md:text-base xl:text-lg rounded-b-lg">
+                <p className="pt-2 md:pt-3 lg:pt-5 text-gray-800 bg-gray-100 dark:bg-gray-300 text-sm md:text-base xl:text-lg rounded-b-lg">
                   Actually there is no option to do it. Sorry :C{' '}
                 </p>
               )}

@@ -5,7 +5,7 @@ import logo from '../assets/logo.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="text-gray-600 body-font bottom-0">
+    <footer className="text-gray-600 body-font bottom-0 dark:bg-gray-800 dark:text-white dark:text-opacity-50">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <Link
           to="/"
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             width="160"
           />
         </Link>
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+        <p className="text-sm dark:text-gray-200 text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © {new Date().getFullYear()} CatchNOTE
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
