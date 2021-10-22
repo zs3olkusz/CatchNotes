@@ -24,16 +24,16 @@ const Footer: React.FC = () => {
           © {new Date().getFullYear()} CatchNOTE
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a className="text-gray-500" title="CatchNOTE Facebook">
+          <a className="text-gray-500" title="CatchNOTE Facebook" href="">
             <Facebook />
           </a>
-          <a className="ml-3 text-gray-500" title="CatchNOTE Twitter">
+          <a className="ml-3 text-gray-500" title="CatchNOTE Twitter" href="">
             <Twitter />
           </a>
-          <a className="ml-3 text-gray-500" title="CatchNOTE Instagram">
+          <a className="ml-3 text-gray-500" title="CatchNOTE Instagram" href="">
             <Instagram />
           </a>
-          <a className="ml-3 text-gray-500" title="CatchNOTE LinkedIn">
+          <a className="ml-3 text-gray-500" title="CatchNOTE LinkedIn" href="">
             <Linkedin />
           </a>
         </span>
