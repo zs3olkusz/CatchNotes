@@ -16,8 +16,8 @@ const Navbar: React.FC = () => {
   return (
     <>
       <Popover className="relative bg-white" as="nav">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className=" bg-white dark:bg-black max-w-7xl mx-auto px-4 sm:px-6 text-black text-opacity-50 dark:text-white dark:text-opacity-50">
+          <div className=" dark flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <Link to="/" title="home">
                 <span className="sr-only">CatchNOTE</span>
@@ -72,6 +72,15 @@ const Navbar: React.FC = () => {
               >
                 About
               </Link>
+              <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input
+                  type="checkbox"
+                  name="toggle"
+                  id="toggle"
+                  className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                />
+                <label className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+              </div>
             </nav>
             {isLogged ? (
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
