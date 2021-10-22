@@ -1,4 +1,4 @@
-![Logo](https://github.com/zs3olkusz/CatchNotes/docs/assets/logo.png)
+![Logo](https://github.com/zs3olkusz/CatchNotes/blob/main/docs/assets/logo.png)
 
 # Catch NOTE
 
@@ -8,15 +8,15 @@ Catch NOTES is feature rich educational tool for taking notes, learning, sharing
 
 ### Home
 
-![Home Screenshot](https://github.com/zs3olkusz/CatchNotes/docs/assets/home.png)
+![Home Screenshot](https://github.com/zs3olkusz/CatchNotes/blob/main/docs/assets/home.png)
 
 ### About
 
-![About Screenshot](https://github.com/zs3olkusz/CatchNotes/docs/assets/about.png)
+![About Screenshot](https://github.com/zs3olkusz/CatchNotes/blob/main/docs/assets/about.png)
 
 ### FAQ
 
-![FAQ Screenshot](https://github.com/zs3olkusz/CatchNotes/docs/assets/faq.png)
+![FAQ Screenshot](https://github.com/zs3olkusz/CatchNotes/blob/main/docs/assets/faq.png)
 
 ## Features
 
