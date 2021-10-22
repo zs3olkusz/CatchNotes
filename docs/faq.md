@@ -1,0 +1,3 @@
+# Catch NOTE | FAQ
+
+## FAQ
