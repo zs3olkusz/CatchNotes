@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <Popover className="relative bg-white" as="nav">
+      <Popover className="dark relative bg-white" as="nav">
         <div className=" bg-white dark:bg-black max-w-7xl mx-auto px-4 sm:px-6 text-black text-opacity-50 dark:text-white dark:text-opacity-50">
           <div className=" dark flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -188,7 +188,7 @@ const Navbar: React.FC = () => {
                   <div>
                     <Link
                       to="/register"
-                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                      className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white from-purple-500 to-pink-600 bg-gradient-to-br hover:from-purple-400 hover:to-pink-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       title="sign up"
                     >
                       Register
