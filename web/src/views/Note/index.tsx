@@ -1,5 +1,6 @@
 import React, { lazy } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import PrivateRoute from '../../routes/PrivateRoute';
 
 const NoteView = lazy(() => import('./Detail'));
 const NoteCreateView = lazy(() => import('./Create'));
@@ -10,12 +11,12 @@ const NoteViews: React.FC = () => {
 
   return (
     <Switch>
-      <Route exact path={path}>
+      <PrivateRoute exact path={path}>
         <NoteListView />
-      </Route>
-      <Route exact path={`${path}/create`}>
+      </PrivateRoute>
+      <PrivateRoute exact path={`${path}/create`}>
         <NoteCreateView />
-      </Route>
+      </PrivateRoute>
       <Route path={`${path}/:id`}>
         <NoteView />
       </Route>

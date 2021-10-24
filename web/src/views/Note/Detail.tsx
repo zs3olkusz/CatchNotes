@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import { Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
 import { useNote } from '../../hooks/useNote';
 import Section from '../../components/NoteSection/Section';
+import PrivateRoute from '../../routes/PrivateRoute';
 
 const NoteUpdateView = lazy(() => import('./Update'));
 
@@ -40,9 +41,9 @@ const NoteView: React.FC = () => {
           )}
         </div>
       </Route>
-      <Route path={`${path}/update`}>
+      <PrivateRoute path={`${path}/update`}>
         <NoteUpdateView id={id} status={status} data={data} error={error} />
-      </Route>
+      </PrivateRoute>
     </Switch>
   );
 };
