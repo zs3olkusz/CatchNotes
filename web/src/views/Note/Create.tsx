@@ -20,7 +20,39 @@ const NoteCreateView: React.FC = () => {
   });
 
   const noteMutation = useMutation(
-    async (newNote: INote) => await api.post('notes/', newNote)
+    async (newNote: INote) => await api.post('notes/', newNote),
+    {
+      onSuccess(data) {
+        sections.map(
+          async ({ subtitle, content, file, type, answers, index }) => {
+            const section: INoteSection = {
+              subtitle,
+              content,
+              type,
+              index,
+              noteId: (data.data as INote).id!,
+            };
+
+            if (type === 'file' || type === 'image' || type === 'voice')
+              section.file = file;
+
+            const res = await noteSectionMutation.mutateAsync(section);
+
+            if (type === 'quiz' && res.status === 201) {
+              answers?.map(({ answer, isCorrect }) => {
+                quizAnswerMutation.mutateAsync({
+                  noteSectionId: (res.data as INoteSection).id!,
+                  answer,
+                  isCorrect,
+                });
+              });
+            }
+          }
+        );
+
+        history.push(`/notes/${(data.data as INote).id}`);
+      }
+    }
   );
 
   const noteSectionMutation = useMutation(
@@ -59,49 +91,14 @@ const NoteCreateView: React.FC = () => {
   const createNote = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!isLogged || !details.title.trim() || !user.id) return;
+    if (!isLogged || !details.title.trim()) return;
 
     const note = {
       title: details.title.trim(),
       description: details.description.trim(),
-      userId: user.id,
     };
-    const result = await noteMutation.mutateAsync(note);
 
-    if (
-      noteMutation.isSuccess &&
-      noteMutation.isError === false &&
-      result.status === 201
-    ) {
-      sections.map(
-        async ({ subtitle, content, file, type, answers, index }) => {
-          const data: INoteSection = {
-            subtitle,
-            content,
-            type,
-            index,
-            noteId: (result.data as INote).id!,
-          };
-
-          if (type === 'file' || type === 'image' || type === 'voice')
-            data.file = file;
-
-          const res = await noteSectionMutation.mutateAsync(data);
-
-          if (type === 'quiz' && res.status === 201) {
-            answers?.map(({ answer, isCorrect }) => {
-              quizAnswerMutation.mutateAsync({
-                noteSectionId: (res.data as INoteSection).id!,
-                answer,
-                isCorrect,
-              });
-            });
-          }
-        }
-      );
-
-      history.push(`/notes/${(result.data as INote).id}`);
-    }
+    await noteMutation.mutateAsync(note);
   };
 
   if (!isLogged) return <Redirect to="/login" />;
