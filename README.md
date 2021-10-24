@@ -52,7 +52,7 @@ Go to the project directory
   npm run dev
 ```
 
-### Run MySQL
+### Run MySQL with database name `catch_notes` with utf8 encoding.
 
 ### Run backend
 
