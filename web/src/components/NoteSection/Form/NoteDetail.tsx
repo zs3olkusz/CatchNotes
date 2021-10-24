@@ -63,7 +63,7 @@ const NoteDetailEdit: React.FC<Props> = ({
           name="description"
           type="text"
           placeholder="Description"
-          required
+          required={false}
           value={description}
           onChange={handleInputChange}
           className="my-2"

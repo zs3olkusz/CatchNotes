@@ -4,7 +4,7 @@ import NotFoundImg from '../assets/undraw_page_not_found_su7k.svg';
 
 const NotFoundView: React.FC = () => {
   return (
-    <div className="pt-0 mt-2">
+    <div className="pt-0 m-2">
       <div className="container max-w-7xl mx-auto pt-16 bg-gray-100 dark:bg-gray-300 rounded-r-2xl rounded-l-2xl">
         <img
           src={NotFoundImg}

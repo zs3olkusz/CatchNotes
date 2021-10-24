@@ -29,7 +29,6 @@ const NoteUpdateView: React.FC<Props> = ({
   const [details, setDetails] = useState({
     title: '',
     description: '',
-    userId: user.id,
   });
 
   useEffect(() => {
@@ -91,12 +90,12 @@ const NoteUpdateView: React.FC<Props> = ({
   const updateNote = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!isLogged || !details.title.trim() || !user.id) return;
+    if (!isLogged || !details.title.trim()) return;
 
     const note = {
       id,
       title: details.title.trim(),
-      description: details.description.trim(),
+      description: (details.description || '').trim(),
     };
     const result = await noteMutation.mutateAsync(note);
 
