@@ -40,7 +40,7 @@ interface Props {
 
 const ContentForm: React.FC<Props> = ({ idx, section, editSection }: Props) => {
   return (
-    <div>
+    <div className="dark:bg-gray-300">
       <ReactQuill
         theme="snow"
         value={section.content || ''}

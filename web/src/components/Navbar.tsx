@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { logout, useAuthDispatch, useAuthState } from '../auth';
 import logo from '../assets/logo.png';
 import { useDarkMode } from '../hooks/useDarkMode';
+import logo2 from '../assets/logo2.png';
 
 const Navbar: React.FC = () => {
   const dispatch = useAuthDispatch();
@@ -26,7 +27,7 @@ const Navbar: React.FC = () => {
                 <span className="sr-only">CatchNOTE</span>
                 <img
                   className="h-12 w-auto sm:h-14"
-                  src={logo}
+                  src={colorTheme === "dark" ? logo : logo2}
                   alt="CatchNOTE logo"
                   height="48"
                   width="100"

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Facebook, Twitter, Instagram, Linkedin } from 'react-feather';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import logo2 from '../assets/logo2.png';
+import { useDarkMode } from '../hooks/useDarkMode';
+
 
 const Footer: React.FC = () => {
+  // THIS WONT WORK
+  const [colorTheme, setColorTheme] = useState(localStorage.getItem('theme')! || 'light');
+
   return (
     <footer className="text-gray-600 body-font bottom-0 dark:bg-gray-800 dark:text-white dark:text-opacity-50">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
@@ -14,7 +20,7 @@ const Footer: React.FC = () => {
         >
           <img
             className="w-30 h-16 "
-            src={logo}
+            src={colorTheme === "dark" ? logo : logo2}
             alt="CatchNOTE logo"
             height="64"
             width="160"
