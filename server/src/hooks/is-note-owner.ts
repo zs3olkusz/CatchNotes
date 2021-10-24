@@ -18,7 +18,7 @@ export default (model: string): Hook => {
       case 'note': {
         const note = await app.service('notes').get(context.id);
 
-        if (note?.userId !== user?.id) {
+        if (note.user.id !== user?.id) {
           throw new NotAuthenticated('Access denied');
         }
 
@@ -31,7 +31,7 @@ export default (model: string): Hook => {
         const id = noteSection.noteId;
         const note = await app.service('notes').get(id);
 
-        if (note?.userId !== user?.id) {
+        if (note.user.id !== user?.id) {
           throw new NotAuthenticated('Access denied');
         }
 
@@ -49,7 +49,7 @@ export default (model: string): Hook => {
         id = noteSection.noteId;
         const note = await app.service('notes').get(id);
 
-        if (note?.userId !== user?.id) {
+        if (note.user.id !== user?.id) {
           throw new NotAuthenticated('Access denied');
         }
 

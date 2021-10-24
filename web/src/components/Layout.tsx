@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div>
+    <div className = "dark:bg-gray-600 bg-white">
       <Navbar />
       <main>{children}</main>
       <Footer />

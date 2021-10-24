@@ -14,9 +14,29 @@ export default (options = {}): Hook => {
         },
       });
 
+      const parsed: any[] = [];
+
+      for (let i = 0; i < noteSections.length; i++) {
+        const section = noteSections[i];
+
+        if (section.type !== 'quiz') {
+          parsed.push(section);
+          continue;
+        }
+
+        parsed.push({
+          ...section,
+          answers: await app.service('quiz-answers').find({
+            query: {
+              noteSectionId: section.id,
+            },
+          }),
+        });
+      }
+
       return {
         ...data,
-        sections: noteSections || [],
+        sections: parsed,
       };
     };
 

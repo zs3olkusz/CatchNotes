@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { api } from '../api';
 import { useAuthState } from '../auth';
-import logo from '../assets/logo-small.png'
+import logo from '../assets/logo-small.png';
+import Input from '../components/Input/Input';
 
 interface IRegisterDetails {
   email: string;
@@ -98,15 +99,17 @@ const RegisterView: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-600 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
           <img
             className="mx-auto h-36 w-auto"
             src={logo}
             alt="Logo"
+            height="144"
+            width="144"
           />
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-gray-200">
             Create your account
           </h2>
         </div>
@@ -119,87 +122,53 @@ const RegisterView: React.FC = () => {
 
         <form className="mt-8 space-y-6" method="POST" onSubmit={handleLogin}>
           <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-                value={registerDetails.email}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="first-name" className="sr-only">
-                First name
-              </label>
-              <input
-                id="first-name"
-                name="firstName"
-                type="text"
-                autoComplete="first-name"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="First name"
-                value={registerDetails.firstName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="Last-name" className="sr-only">
-                Last name
-              </label>
-              <input
-                id="last-name"
-                name="lastName"
-                type="text"
-                autoComplete="last-name"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Last name"
-                value={registerDetails.lastName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password1" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password1"
-                name="password1"
-                type="password"
-                autoComplete="current-password"
-                required
-                min="8"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-                value={registerDetails.password1}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password2" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password2"
-                name="password2"
-                type="password"
-                autoComplete="repeat-password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Confirm password"
-                value={registerDetails.password2}
-                onChange={handleInputChange}
-              />
-            </div>
+            <Input
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="Email address"
+              value={registerDetails.email}
+              onChange={handleInputChange}
+              rounded={{ top: true }}
+            />
+            <Input
+              name="firstName"
+              type="text"
+              autoComplete="first-name"
+              required
+              placeholder="First name"
+              value={registerDetails.firstName}
+              onChange={handleInputChange}
+            />
+            <Input
+              name="lastName"
+              type="text"
+              autoComplete="last-name"
+              required
+              placeholder="Last name"
+              value={registerDetails.lastName}
+              onChange={handleInputChange}
+            />
+            <Input
+              name="password1"
+              type="password"
+              autoComplete="current-password"
+              required
+              placeholder="Password"
+              value={registerDetails.password1}
+              onChange={handleInputChange}
+            />
+            <Input
+              name="password2"
+              type="password"
+              autoComplete="repeat-password"
+              required
+              placeholder="Confirm password"
+              value={registerDetails.password2}
+              onChange={handleInputChange}
+              rounded={{ bottom: true }}
+            />
           </div>
 
           <div className="flex items-center justify-between">
@@ -207,7 +176,7 @@ const RegisterView: React.FC = () => {
             <div className="text-sm">
               <Link
                 to="/login"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-purple-400 dark:hover:text-purple-300"
               >
                 You already have an account?
               </Link>

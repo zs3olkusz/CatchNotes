@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 
-export function useDarkMode() {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+type ITheme = 'dark' | 'light';
+
+export function useDarkMode(): [
+  ITheme,
+  React.Dispatch<React.SetStateAction<ITheme>>
+] {
+  const [theme, setTheme] = useState<ITheme>(
+    (localStorage.getItem('theme') as ITheme) || 'light'
+  );
   const colorTheme = theme === 'dark' ? 'light' : 'dark';
 
   useEffect(() => {
@@ -12,20 +19,5 @@ export function useDarkMode() {
     localStorage.setItem('theme', theme);
   }, [theme, colorTheme]);
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-  }, []);
-
-  return [theme, setTheme];
+  return [colorTheme, setTheme];
 }
