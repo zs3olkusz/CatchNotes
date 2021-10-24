@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Faq: React.FC = () => {
   const [question, setquestion] = useState<number | null>(0);
   return (
-    <div className="pt-0">
+    <div className="pt-0 mt-2">
       <div className="container max-w-7xl mx-auto pt-16 bg-gray-100 dark:bg-gray-300 rounded-r-2xl rounded-l-2xl">
         <div className="text-center pb-3 md:pb-10 xl:pb-20">
           {/*<p className="text-gray-500 text-base lg:text-lg uppercase leading-tight mb-4"></p>*/}

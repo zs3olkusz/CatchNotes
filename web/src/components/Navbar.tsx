@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
                 <span>Notes</span>
               </Link>
               <Link
-                to="/"
+                to="/collab"
                 className="text-base font-medium dark:text-white dark:hover:text-gray-300 text-gray-500 hover:text-gray-900"
                 title="collab"
               >
@@ -76,9 +76,9 @@ const Navbar: React.FC = () => {
                 About
               </Link>
               <div className="w-10 mr-2 select-none transition duration-200 ease-in">
-                <span 
-                onClick = {() => setTheme(()=>colorTheme)}
-                className = "w-7 h-7 bg-purple-500 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center">
+                <span
+                  onClick={() => setTheme(() => colorTheme)}
+                  className="w-7 h-7 bg-purple-500 rounded-full shadow-lg cursor-pointer text-white flex items-center justify-center">
                   {colorTheme === "light" ? (
                     <Sun />
                   ) : (
@@ -166,7 +166,7 @@ const Navbar: React.FC = () => {
                   </Link>
 
                   <Link
-                    to="/"
+                    to="/faq"
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
                     title="FAQ"
                   >
@@ -174,7 +174,7 @@ const Navbar: React.FC = () => {
                   </Link>
 
                   <Link
-                    to="/faq"
+                    to="/collab"
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
                     title="collab"
                   >

@@ -1,56 +1,35 @@
 import React from 'react';
-import { Download } from 'react-feather';
+import { Download, Edit } from 'react-feather';
 
 interface Props {
   file: string;
 }
 
 const SectionActions: React.FC<Props> = ({ file }: Props) => {
-  if (file)
-    return (
-      <div className="flex">
+  return (
+    <div className="grid grid-cols-2 mt-2">
+      {file ? (
         <a
           href={file}
           target="_blank"
           download
-          className="bg-indigo-400 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded inline-flex items-center"
+          className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded inline-flex items-center w-36"
+          rel="noreferrer"
         >
           <Download className="w-4 h-4 mr-2" />
           <span>Download</span>
         </a>
+      ) : (
+        <div />
+      )}
 
-        <a className="text-indigo-500 inline-flex items-center">
-          Learn More
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="w-4 h-4 ml-2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    );
-
-  return (
-    <a className="text-indigo-500 inline-flex items-center">
-      Learn More
-      <svg
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        className="w-4 h-4 ml-2"
-        viewBox="0 0 24 24"
+      <button
+        className="place-self-end appearance-none relative block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-500 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:text-indigo-500 focus:z-10 sm:text-sm text-center"
+        title="edit section"
       >
-        <path d="M5 12h14M12 5l7 7-7 7"></path>
-      </svg>
-    </a>
+        <Edit />
+      </button>
+    </div>
   );
 };
 

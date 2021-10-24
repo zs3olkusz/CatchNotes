@@ -49,7 +49,9 @@ const About: React.FC = () => {
                     <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-pink-300">
                       <Phone />
                     </div>
-                    <h3 className="text-xl mb-1 font-semibold dark:text-gray-200" >Contact</h3>
+                    <h3 className="text-xl mb-1 font-semibold dark:text-gray-200">
+                      Contact
+                    </h3>
                     <p className="mb-4 text-blueGray-500 dark:text-gray-200">
                       You can contact with us using this e-mail:
                       CatchNotes@example.com 😁
@@ -63,7 +65,9 @@ const About: React.FC = () => {
                     <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-yellow-300">
                       <UploadCloud />
                     </div>
-                    <h3 className="text-xl mb-1 font-semibold dark:text-gray-200">Updates</h3>
+                    <h3 className="text-xl mb-1 font-semibold dark:text-gray-200">
+                      Updates
+                    </h3>
                     <p className="mb-4 text-blueGray-500 dark:text-gray-200">
                       We are still working on this site. Check our site
                       frequently for new updates. 😀
@@ -75,7 +79,9 @@ const About: React.FC = () => {
                     <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-300">
                       <Home />
                     </div>
-                    <h3 className="text-xl mb-1 font-semibold dark:text-gray-200">Team</h3>
+                    <h3 className="text-xl mb-1 font-semibold dark:text-gray-200">
+                      Team
+                    </h3>
                     <p className="mb-4 text-blueGray-500 dark:text-gray-200">
                       Built by students from Klucze, Olkusz, Sułoszowa. 😉
                     </p>
